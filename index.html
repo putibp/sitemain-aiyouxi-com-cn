@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>爱游戏 · 发现你的游戏风格</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: linear-gradient(145deg, #fdf5e6 0%, #fbebc8 50%, #f3d9b1 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1rem;
+      line-height: 1.7;
+      color: #2e241e;
+    }
+
+    .page-card {
+      max-width: 790px;
+      width: 100%;
+      background-color: #fffcf8;
+      border-radius: 42px;
+      padding: 2.8rem 2.5rem;
+      box-shadow: 0 12px 28px rgba(150, 100, 60, 0.10), 0 4px 12px rgba(180, 120, 60, 0.06);
+      transition: box-shadow 0.2s ease;
+    }
+
+    @media (max-width: 540px) {
+      .page-card {
+        padding: 2rem 1.2rem;
+        border-radius: 30px;
+      }
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.2rem;
+      background: linear-gradient(to right, #b06d38, #c77f4a);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      display: inline-block;
+    }
+
+    .byline {
+      display: block;
+      margin-bottom: 1.2rem;
+      font-size: 1rem;
+      color: #8a6f57;
+      border-left: 4px solid #dcb48c;
+      padding-left: 1rem;
+      font-weight: 400;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      font-weight: 500;
+      margin-top: 2.2rem;
+      margin-bottom: 0.6rem;
+      color: #4f3628;
+      border-bottom: 1px dashed #e6d4c0;
+      padding-bottom: 0.3rem;
+    }
+
+    p {
+      margin-bottom: 1.2rem;
+      font-size: 1.02rem;
+      color: #382e26;
+    }
+
+    .intro-pull {
+      background: #fbf1e7;
+      border-radius: 22px;
+      padding: 1.5rem 1.8rem;
+      margin: 1.8rem 0;
+      font-size: 1.08rem;
+      border-left: 6px solid #cb8f5e;
+    }
+
+    .intro-pull strong {
+      color: #7d5439;
+    }
+
+    .snippet-block {
+      background: #f6ede2;
+      border-radius: 20px;
+      padding: 1.4rem 1.8rem;
+      margin: 2rem 0 1.2rem;
+      font-style: normal;
+      box-shadow: inset 0 1px 4px rgba(0,0,0,0.02);
+    }
+
+    .snippet-block cite {
+      display: block;
+      margin-top: 0.6rem;
+      font-size: 0.9rem;
+      color: #7d624b;
+      text-align: right;
+    }
+
+    .link-sentence {
+      background: #faf3ea;
+      padding: 0.2rem 0.8rem;
+      border-radius: 40px;
+      display: inline-block;
+      transition: background 0.15s;
+    }
+
+    a {
+      color: #aa6f3e;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.15s, color 0.2s;
+    }
+
+    a:hover {
+      border-bottom-color: #c0845a;
+      color: #7a4d2c;
+    }
+
+    .soft-button-link {
+      display: inline-block;
+      background: #f5e3d4;
+      padding: 0.6rem 1.4rem;
+      border-radius: 50px;
+      font-weight: 500;
+      color: #4e3629;
+      transition: background 0.2s, transform 0.1s;
+      border-bottom: none;
+      margin-top: 0.2rem;
+    }
+
+    .soft-button-link:hover {
+      background: #ebd3be;
+      transform: scale(1.02);
+      border-bottom: none;
+    }
+
+    .faq-mini {
+      margin: 2.4rem 0 0.8rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .faq-item {
+      background: #f7efe6;
+      border-radius: 24px;
+      padding: 1rem 1.5rem;
+    }
+
+    .faq-item h3 {
+      font-size: 1.1rem;
+      font-weight: 500;
+      margin-bottom: 0.3rem;
+      color: #5c3f2d;
+    }
+
+    .faq-item p {
+      margin-bottom: 0;
+      font-size: 0.98rem;
+    }
+
+    .visit-note {
+      margin-top: 2.8rem;
+      text-align: center;
+      padding: 1rem 0.2rem 0.2rem;
+      border-top: 1px solid #eadccf;
+      font-size: 0.98rem;
+      color: #6b523e;
+    }
+
+    .visit-note span {
+      background: #f1e1d1;
+      padding: 0.2rem 1rem;
+      border-radius: 30px;
+    }
+  </style>
+</head>
+<body>
+<div class="page-card">
+
+  <h1>爱游戏</h1>
+  <span class="byline">不只是入口，更是风格索引</span>
+
+  <p>当你打开一个与游戏相关的网站，最先想问的往往是：“这里能帮我找到什么？” 从类别到推荐，从新游到经典，<strong>信息密度与筛选效率</strong>决定了这个站点是否值得停留。<a href="https://sitemain-aiyouxi.com.cn" style="font-weight: 500;">爱游戏</a>正是围绕这个直觉而搭建的——它不试图用花哨的标语包装自己，而是把“帮你快速定位想玩的游戏”作为叙事主线。</p>
+
+  <div class="intro-pull">
+    <strong>一句话概括</strong> · 一个经过梳理的游戏信息集合，偏重实用分类与内容指引。没有冗长的启动流程，首页即目录。
+  </div>
+
+  <h2>它解决什么问题？</h2>
+  <p>游戏库越来越庞杂，评测与推荐文章散落各处。多数玩家需要的不再是另一个“大全”，而是经过筛选、带有观点分组的索引。<a href="https://sitemain-aiyouxi.com.cn">爱游戏</a>在结构上做了减法：主页直接呈现分类脉络与内容摘要，让你在两次点击内判断“这里有没有我关心的内容”。</p>
+
+  <h2>场景拆解：谁会用得上</h2>
+  <p><strong>场景一 · 淘旧补新</strong> —— 你有一个空闲的周末，想找一款2018-2022年间被低估的叙事游戏。站点通过专题分组和简短引语提供线索，不需要逐个翻论坛。</p>
+  <p><strong>场景二 · 快速比对</strong> —— 你听说过几款同类游戏（例如轻Rogue或建造模拟），想看看它们的主要差异。这里用卡片式摘要取代长评，节约对比成本。</p>
+
+  <div class="snippet-block">
+    “好的游戏索引应该像一位了解你口味的店员，不多话，但递过来的东西总在点子上。”
+    <cite>—— 来自某位站内访问者的留言摘要</cite>
+  </div>
+
+  <h2>站点内容的三个特点</h2>
+  <p>❶ <strong>分类视角偏“玩法感受”而非纯题材</strong>（比如将“建造+探索”单独成类，而不是笼统归为沙盒）。<br>
+  ❷ <strong>每个条目附有短标签</strong>（时长倾向、难度、氛围关键词），方便横向筛选。<br>
+  ❸ <strong>避免过度打分</strong>，用一句话体验描述代替数字评分，保留解读空间。</p>
+
+  <p style="margin-top: 1.6rem;">举个例子：如果你喜欢“慢节奏、重氛围、有手绘风格”的游戏，在相关分类下会看到对应标签组合，而不再需要逐一点开详情页判断风格——这就是索引型站点最该做的事。</p>
+
+  <!-- 自然链接句子，嵌入a标签 -->
+  <p style="margin: 1.6rem 0 0.6rem;">如果你一直在找这样一个能<strong>快速感知游戏调性</strong>的中文索引，不妨试试看<a href="https://sitemain-aiyouxi.com.cn" class="soft-button-link">爱游戏</a>，主页即目录，目录即指引。</p>
+
+  <!-- FAQ 摘要 -->
+  <div class="faq-mini">
+    <div class="faq-item">
+      <h3>FAQ 摘要 · 信息会定期更新吗？</h3>
+      <p>目前站内内容由维护者按季度整理，主要补充近期口碑较稳定或具有讨论价值的作品，不追求日更，但保持每批条目都有实质介绍。</p>
+    </div>
+    <div class="faq-item">
+      <h3>FAQ 摘要 · 是否有用户投稿入口？</h3>
+      <p>现阶段以编辑推荐为主，并未开放直接投稿。若你有推荐的遗珠作品，可通过站内邮箱线索提交建议，仅供参考。</p>
+    </div>
+  </div>
+
+  <!-- 访问句 / 提示句 -->
+  <div class="visit-note">
+    <span>✧ 浏览时建议使用桌面或平板，分类布局更完整 ✧</span>
+  </div>
+
+  <!-- 隐性保证：干净收尾 -->
+  <p style="margin-top: 1.4rem; font-size: 0.9rem; color: #7b6551; text-align: right; opacity: 0.8;">索引型站点 · 以清晰为第一准则</p>
+
+</div>
+</body>
+</html>

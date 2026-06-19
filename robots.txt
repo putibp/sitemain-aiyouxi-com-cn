@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://putibp.github.io/sitemain-aiyouxi-com-cn/sitemap.xml
