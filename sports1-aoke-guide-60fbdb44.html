@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>澳客 · 日常查询与对照笔记</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: #f2f4f6;
+      color: #1e2a3a;
+      line-height: 1.7;
+      padding: 2rem 1rem;
+    }
+    .container {
+      max-width: 920px;
+      margin: 0 auto;
+    }
+    /* 卡片系统 */
+    .card {
+      background: #ffffff;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
+      padding: 2rem 2.2rem;
+      margin-bottom: 2rem;
+      border: 1px solid #e8ebee;
+      transition: box-shadow 0.2s;
+    }
+    .card:hover {
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06), 0 2px 6px rgba(0, 0, 0, 0.02);
+    }
+    .card-header {
+      margin-bottom: 1.2rem;
+    }
+    .card-title {
+      font-size: 1.8rem;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      color: #0f1a2b;
+      margin-bottom: 0.4rem;
+    }
+    .card-meta {
+      font-size: 0.9rem;
+      color: #6f7d8c;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 1.2rem;
+    }
+    .card-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    .card-body p {
+      margin-bottom: 1rem;
+      font-size: 1rem;
+    }
+    .card-body p:last-child {
+      margin-bottom: 0;
+    }
+    a {
+      color: #1f6e8c;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.15s, color 0.15s;
+      font-weight: 450;
+    }
+    a:hover {
+      color: #0b4a63;
+      border-bottom-color: #8bb9cc;
+    }
+    .tagline {
+      font-size: 1.05rem;
+      color: #3f5061;
+      background: #f0f3f7;
+      padding: 0.6rem 1.2rem;
+      border-radius: 40px;
+      display: inline-block;
+      margin-bottom: 0.2rem;
+      border: 1px solid #dfe4ea;
+      line-height: 1.4;
+    }
+    .blockquote {
+      border-left: 4px solid #b0c7d4;
+      background: #f7fafc;
+      padding: 1rem 1.4rem;
+      margin: 1.2rem 0;
+      border-radius: 0 12px 12px 0;
+      color: #2a3d4e;
+      font-style: normal;
+    }
+    .blockquote p {
+      margin-bottom: 0.3rem;
+    }
+    .blockquote .source {
+      font-size: 0.85rem;
+      color: #5b6f7e;
+      margin-top: 0.6rem;
+    }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+      margin: 1.2rem 0;
+    }
+    .insight-item {
+      background: #f8fafc;
+      border-radius: 14px;
+      padding: 1rem 1.2rem;
+      border: 1px solid #e2e8ed;
+    }
+    .insight-item h4 {
+      font-weight: 500;
+      font-size: 1rem;
+      margin-bottom: 0.3rem;
+      color: #1e2f3f;
+    }
+    .insight-item p {
+      font-size: 0.95rem;
+      color: #3d5467;
+      margin: 0;
+    }
+    .faq-item {
+      border-bottom: 1px solid #e4e9ef;
+      padding: 1rem 0;
+    }
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+    .faq-item details {
+      cursor: pointer;
+    }
+    .faq-item summary {
+      font-weight: 500;
+      font-size: 1.05rem;
+      color: #1a2b3c;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .faq-item summary::before {
+      content: "▸";
+      color: #728ea0;
+      font-size: 1.2rem;
+      transition: transform 0.15s;
+    }
+    .faq-item details[open] summary::before {
+      transform: rotate(90deg);
+    }
+    .faq-item .answer {
+      padding: 0.6rem 0 0.2rem 1.8rem;
+      color: #335066;
+      font-size: 0.98rem;
+    }
+    .section-marker {
+      font-size: 0.85rem;
+      color: #8899a8;
+      letter-spacing: 0.03em;
+      margin-bottom: 0.2rem;
+      text-transform: uppercase;
+      font-weight: 450;
+    }
+    .visit-note {
+      text-align: center;
+      padding-top: 1rem;
+      border-top: 1px solid #e0e6ec;
+      margin-top: 1rem;
+      color: #4a6175;
+    }
+    .visit-note p {
+      font-size: 1rem;
+      margin-bottom: 0.3rem;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #dce2e9;
+      margin: 1.5rem 0;
+    }
+    @media (max-width: 680px) {
+      body {
+        padding: 1.2rem 0.8rem;
+      }
+      .card {
+        padding: 1.4rem 1.2rem;
+        border-radius: 16px;
+      }
+      .card-title {
+        font-size: 1.5rem;
+      }
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+      .tagline {
+        font-size: 0.92rem;
+        padding: 0.4rem 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- hero 卡片：文章标题 + 导语 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="tagline">阅读 · 对照 · 延伸</div>
+      <h1 class="card-title" style="font-size:2.2rem; margin-top:0.3rem;">从日常出发：查询、对照与延伸阅读</h1>
+      <div class="card-meta">
+        <span>📅 2025 · 早春</span>
+        <span>📌 话题 · 信息整理</span>
+        <span>✏️ 笔记型</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <p>我们每天都会遇到几个陌生概念、数字或说法——可能是朋友聊天时提到的球队数据，也可能是报道里一闪而过的术语。这时候，与其依赖零散的搜索，不如建立一个轻量的查询与对照习惯。</p>
+      <p>这篇文章不是教程，更像是一份使用笔记。我会从三个日常生活场景出发，聊聊如何利用一个相对集中的信息站——比如 <a href="https://sports1-aoke.com">澳客</a>——来更高效地完成查询、对照和延伸阅读。这些方法不复杂，但坚持下来会很有用。</p>
+    </div>
+  </div>
+
+  <!-- 正文 多段 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="section-marker">一 · 查询的起点</div>
+      <h2 class="card-title">不只是关键词</h2>
+    </div>
+    <div class="card-body">
+      <p>很多人查询时习惯直接输入一个词，然后逐条翻看结果。但更有效的方式是带着「对照意识」去查。比如你想了解某个联赛的近期状态，不妨同时查看排名、进球分布和历史交锋——这些信息在 <a href="https://sports1-aoke.com">澳客</a> 的页面里通常被组织在一起，省去了反复切换标签页的时间。</p>
+      <p>我自己的习惯是：先看概览，再定位到具体条目，最后横向对比几个关键字段。这个过程很像在图书馆里先翻目录，再找章节，最后做笔记。不需要一次记住所有，但至少知道哪里可以快速回溯。</p>
+      <div class="blockquote">
+        <p>“查询不是终点，而是理解的开端。最好的查询让问题变少，也让下一个问题更具体。”</p>
+        <div class="source">—— 摘自博客《信息食谱》</div>
+      </div>
+      <p>在实际使用中，我发现页面内的筛选和排序功能很实用。例如按日期、按主客场、按数值区间排列，能立刻缩小范围。这比手动比对要快得多。下面是我常用的几个查询切入点，整理成了一个小卡片列表。</p>
+    </div>
+  </div>
+
+  <!-- 特点 / 场景 卡片 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="section-marker">二 · 三种常见场景</div>
+      <h2 class="card-title">对照、延伸与回看</h2>
+    </div>
+    <div class="card-body">
+      <div class="grid-2">
+        <div class="insight-item">
+          <h4>🔍 场景：快速对照</h4>
+          <p>需要同时比较两支队伍或两个赛季的数据时，打开对照视图，把关键指标并排放置。差异一目了然，不用来回滚动。</p>
+        </div>
+        <div class="insight-item">
+          <h4>📎 场景：延伸阅读</h4>
+          <p>看到某个感兴趣的数据点，点进去通常会有更详细的分解页面，有时还带图表和注释，适合深入理解背景。</p>
+        </div>
+        <div class="insight-item">
+          <h4>🔄 场景：回看历史</h4>
+          <p>过了一段时间想重新验证某个印象？直接调出历史记录或存档页，比重新搜索更直接，也更容易发现趋势。</p>
+        </div>
+        <div class="insight-item">
+          <h4>📋 场景：离线笔记</h4>
+          <p>把页面内容快速截图或复制关键段落，存入自己的笔记应用。下次遇到类似问题，先翻笔记再联网验证，效率更高。</p>
+        </div>
+      </div>
+      <p>我尤其喜欢「延伸阅读」这个习惯。很多时候，一个数字背后是一段赛程、一套规则或一个变化过程。顺着链接点下去，常常能发现比预期更丰富的信息脉络。当然，前提是平台本身的内容组织足够清晰，而 <a href="https://sports1-aoke.com">澳客</a> 在这方面做得比较细致，页面之间的跳转逻辑很自然。</p>
+    </div>
+  </div>
+
+  <!-- 引用提示 + 访问句 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="section-marker">三 · 提示与习惯</div>
+      <h2 class="card-title">把查询变成日常的一部分</h2>
+    </div>
+    <div class="card-body">
+      <p>如果你也想培养这样的信息习惯，我的建议是：不用贪多。每周花两三次、每次十分钟，选一个你感兴趣的主题，进去浏览、对照、记录。重点不是获取多少信息，而是慢慢建立起自己的参照系。</p>
+      <div class="blockquote">
+        <p>“信息越容易获取，越需要主动筛选。与其被推送裹挟，不如定期自己去‘点一点’。”</p>
+        <div class="source">—— 日常笔记，2025</div>
+      </div>
+      <p>你可以在任何有网络的地方打开 <a href="https://sports1-aoke.com">澳客</a>，把它当作一个安静的参考台。不需要注册，不需要关注，只需要带着问题或好奇。页面设计偏素净，信息密度适中，很适合沉浸式阅读。</p>
+      <p>另外提一个小技巧：如果你发现某个数据页面经常用到，可以用浏览器把它加入书签文件夹，或者直接放在常用标签页里。这样下次想回顾时，多一步都省了。</p>
+    </div>
+  </div>
+
+  <!-- FAQ 摘要 卡片 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="section-marker">四 · 常见疑问摘要</div>
+      <h2 class="card-title" style="font-size:1.7rem;">几个你可能想问的</h2>
+    </div>
+    <div class="card-body">
+      <div class="faq-item">
+        <details>
+          <summary>这个平台主要适合什么样的查询？</summary>
+          <div class="answer">适合需要结构化数据的日常对照，比如排名、统计、历史记录等。页面通常分为概览和详情两层，可以快速定位。</div>
+        </details>
+      </div>
+      <div class="faq-item">
+        <details>
+          <summary>需要注册或付费吗？</summary>
+          <div class="answer">浏览基础内容不需要注册，也没有隐藏付费门槛。部分高级筛选或个性化记录功能可能需要登录，但日常查询完全免费。</div>
+        </details>
+      </div>
+      <div class="faq-item">
+        <details>
+          <summary>移动端体验怎么样？</summary>
+          <div class="answer">页面做了响应式适配，在手机和平板上显示良好，卡片布局会自动调整，表格也可以横向滑动查看，不会遮挡内容。</div>
+        </details>
+      </div>
+      <div class="faq-item">
+        <details>
+          <summary>更新频率如何？</summary>
+          <div class="answer">数据更新比较及时，通常会在相关事件结束后几小时内刷新，部分重要信息实时更新。适合习惯第一时间查看的用户。</div>
+        </details>
+      </div>
+    </div>
+  </div>
+
+  <!-- 访问句 卡片 -->
+  <div class="card" style="text-align:center; padding:2rem 1.5rem;">
+    <div class="card-body">
+      <p style="font-size:1.1rem; margin-bottom:0.2rem;">慢慢来，比较快</p>
+      <p style="color:#4a6175; max-width:500px; margin:0.6rem auto 1rem;">如果你恰好需要一份安静的信息参考，不妨把这个页面加入你的日常浏览路线。它不喧哗，但足够实在。</p>
+      <hr style="max-width:120px; margin:1.2rem auto;">
+      <div class="visit-note">
+        <p>📖 你可以随时通过 <a href="https://sports1-aoke.com">澳客</a> 开始一次查询或对照。</p>
+        <p style="font-size:0.9rem; color:#6a8196;">保持好奇心，保持轻松。</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
