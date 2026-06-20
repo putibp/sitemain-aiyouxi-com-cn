@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>威廉希尔 · 信息卡片</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f9f8f7;
+            color: #2c2b2a;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, serif;
+            line-height: 1.7;
+            padding: 3rem 1.5rem 5rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            -webkit-font-smoothing: antialiased;
+        }
+        .page {
+            max-width: 720px;
+            width: 100%;
+        }
+
+        /* 极简留白 + 清晰层级 */
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 350;
+            letter-spacing: 2px;
+            margin-bottom: 0.25rem;
+            color: #1e1d1b;
+            border-bottom: 1px solid #d9d6d1;
+            padding-bottom: 0.5rem;
+        }
+        .subhead {
+            font-size: 0.9rem;
+            color: #7a7670;
+            margin-top: -0.2rem;
+            margin-bottom: 2.5rem;
+            font-weight: 350;
+            letter-spacing: 0.5px;
+        }
+
+        h2 {
+            font-size: 1.4rem;
+            font-weight: 380;
+            margin: 2.8rem 0 1rem 0;
+            color: #2f2d2a;
+            border-left: 3px solid #b8b2a8;
+            padding-left: 0.8rem;
+        }
+
+        h3 {
+            font-size: 1.1rem;
+            font-weight: 400;
+            margin: 1.6rem 0 0.6rem;
+            color: #3d3a36;
+        }
+
+        p {
+            margin-bottom: 1.3rem;
+            font-weight: 350;
+            color: #3b3834;
+        }
+
+        a {
+            color: #2c5f5c;
+            text-decoration: none;
+            border-bottom: 1px dotted #b0c7c4;
+            transition: border 0.2s, color 0.15s;
+        }
+        a:hover {
+            border-bottom: 1px solid #2c5f5c;
+            color: #1c4340;
+        }
+
+        /* 卡片网格 */
+        .card-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin: 2rem 0 1.8rem;
+        }
+        @media (max-width: 520px) {
+            .card-grid {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+        }
+
+        .card {
+            background: #ffffffef;
+            border: 1px solid #e4dfd9;
+            border-radius: 14px;
+            padding: 1.5rem 1.3rem 1.6rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.01);
+            transition: box-shadow 0.25s, border 0.2s;
+            backdrop-filter: blur(1px);
+        }
+        .card:hover {
+            border-color: #cac3b9;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.03);
+        }
+        .card-icon {
+            font-size: 1.9rem;
+            display: inline-block;
+            margin-bottom: 0.2rem;
+            opacity: 0.75;
+        }
+        .card h4 {
+            font-weight: 400;
+            font-size: 1.15rem;
+            margin: 0.05rem 0 0.5rem;
+            color: #2b2a27;
+            letter-spacing: 0.3px;
+        }
+        .card p {
+            font-size: 0.9rem;
+            margin-bottom: 0;
+            color: #4f4b45;
+            line-height: 1.6;
+        }
+
+        /* 用途卡片 (三列在宽屏) */
+        .card-triple {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.2rem;
+            margin: 2rem 0 1.6rem;
+        }
+        @media (max-width: 640px) {
+            .card-triple {
+                grid-template-columns: 1fr;
+            }
+        }
+        .card-tiny {
+            background: #f4f2ef;
+            border-radius: 12px;
+            padding: 1.2rem 1rem 1.1rem;
+            border: 1px solid #e1dcd5;
+            transition: background 0.2s;
+        }
+        .card-tiny:hover {
+            background: #ede9e3;
+        }
+        .card-tiny h4 {
+            font-weight: 400;
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
+            color: #2e2b27;
+        }
+        .card-tiny p {
+            font-size: 0.85rem;
+            margin-bottom: 0;
+            color: #5d5851;
+        }
+
+        /* 引用 / 提示 */
+        .note {
+            background: #f0eeea;
+            border-left: 4px solid #b8b2a8;
+            padding: 1rem 1.5rem;
+            border-radius: 0 10px 10px 0;
+            margin: 2rem 0 1.5rem;
+            font-size: 0.95rem;
+            color: #3e3b36;
+        }
+
+        .faq-mini {
+            margin: 2.2rem 0 0.8rem;
+        }
+        .faq-item {
+            border-bottom: 1px solid #ddd9d2;
+            padding: 0.8rem 0;
+        }
+        .faq-item strong {
+            display: block;
+            font-weight: 400;
+            font-size: 1rem;
+            color: #34312d;
+            margin-bottom: 0.2rem;
+        }
+        .faq-item p {
+            margin: 0.1rem 0 0.2rem;
+            font-size: 0.9rem;
+            color: #5d5851;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #d5cfc7;
+            margin: 2.8rem 0 1.5rem;
+            opacity: 0.5;
+        }
+
+        .footer-note {
+            font-size: 0.8rem;
+            color: #8b857d;
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #e2ddd6;
+            margin-top: 3.5rem;
+        }
+        .footer-note a {
+            color: #6d6a64;
+            border-color: #cac3b9;
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+
+        <h1>威廉希尔</h1>
+        <div class="subhead">再次访问 · 收藏 · 持续关注</div>
+
+        <p style="font-size:1.05rem; margin-bottom:1.8rem;">
+            有时候不是第一次遇见才值得记录。那些你反复打开、随手收藏、在旧标签页里默默留着的名字，往往才是真正嵌进日常的角落。<a href="https://webs--williamhill.com" style="border-bottom:1px solid #9bb8b4;">威廉希尔</a>对我来说，就是这样一个存在——不需要刻意想起，但每次指尖自然落回。
+        </p>
+
+        <!-- 主视觉卡片 -->
+        <div class="card" style="padding:2rem 1.5rem; margin-bottom:1.5rem; background: #f6f4f0;">
+            <div style="display:flex; align-items: flex-start; gap:1.5rem; flex-wrap:wrap;">
+                <div style="min-width:100px;">
+                    <span style="font-size:2.8rem; line-height:1;">&#x2616;</span>
+                </div>
+                <div style="flex:1;">
+                    <h3 style="margin-top:0; font-weight:380; font-size:1.3rem; border:none; padding:0;">反复抵达的坐标</h3>
+                    <p style="margin-bottom:0.4rem;">书签栏靠后的位置，浏览器地址栏的历史记录，深夜的无意识输入——这些细小的轨迹累积成一个再熟悉不过的名字。它不喧哗，只是安静地在那里，等你需要的时候自然打开。</p>
+                    <p style="font-size:0.9rem; color:#5f5b55;">如同一个老朋友，不常联系，但每次造访都无需寒暄。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 用途卡片（三列） -->
+        <h2>一些自然的用途</h2>
+        <div class="card-triple">
+            <div class="card-tiny">
+                <h4>&#x25C6; 看一眼</h4>
+                <p>饭后或工作间隙，随手刷新，看看有什么值得留意的更新。不需要承诺，没有负担。</p>
+            </div>
+            <div class="card-tiny">
+                <h4>&#x25C6; 对比与参考</h4>
+                <p>当需要了解某个方向或动态时，把它作为一个长期观察的参照点。信息流里的锚。</p>
+            </div>
+            <div class="card-tiny">
+                <h4>&#x25C6; 零散的时间</h4>
+                <p>等人的三分钟，咖啡还没凉的空档，不需要专门安排，几页浏览刚刚好。</p>
+            </div>
+        </div>
+
+        <!-- 适合人群 + 卡片网格 -->
+        <h2>适合哪些人</h2>
+        <div class="card-grid">
+            <div class="card">
+                <div class="card-icon">&#x2302;</div>
+                <h4>习惯性浏览者</h4>
+                <p>每天有固定浏览路径的人，会把它加入日常序列，如同打开天气预报或邮件。</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">&#x2692;</div>
+                <h4>信息收集者</h4>
+                <p>喜欢把不同来源放在手边，不急于判断，只是保持观察和横向对比。</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">&#x2630;</div>
+                <h4>轻度收藏家</h4>
+                <p>浏览器书签里攒了几十个名字，定期清理但总有一些怎么也删不掉——<a href="https://webs--williamhill.com">威廉希尔</a>可能就在其中。</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">&#x2714;</div>
+                <h4>不追新的人</h4>
+                <p>对「错过」没有焦虑，更愿意把注意力放在几个固定的地方，慢慢看、反复看。</p>
+            </div>
+        </div>
+
+        <!-- 自然链接段落（嵌入句子） -->
+        <p>偶尔会和朋友聊起收藏夹里那些「虽然不常用但就是不想删」的站点。有人提到书签里躺了好几年的论坛，有人存着早已不更新的博客，而我通常会提起<a href="https://webs--williamhill.com">威廉希尔</a>——它不属于任何怀旧叙事，只是持续存在着，像一段不需要解释的背景音。</p>
+
+        <p style="margin-bottom:2rem;">这种关系不需要维护。你可以在任何时间打开它，哪怕只是瞥一眼就关掉。它没有推送，没有催促，也不会因为你很久没来就改变面貌。某种程度上，这是一种安静的相互在场。</p>
+
+        <!-- 提示 / 笔记 -->
+        <div class="note">
+            <strong style="font-weight:400; display:block; margin-bottom:0.2rem;">&#x261E; 一点个人的使用习惯</strong>
+            我通常在桌面端保留一个标签页组，把常看的几个页面固定在一起。重启浏览器后，它们会自动加载。<a href="https://webs--williamhill.com">威廉希尔</a>是其中之一。不需要寻找，打开就是。
+        </div>
+
+        <!-- FAQ 摘要（简洁版） -->
+        <h2 style="margin-top:2.5rem;">经常想到的几个问题</h2>
+        <div class="faq-mini">
+            <div class="faq-item">
+                <strong>为什么值得反复回来？</strong>
+                <p>对一个地方的持续关注往往不是因为某个单一理由，而是因为它稳定、不打扰，并且总能提供一些细碎的、可被带走的东西。</p>
+            </div>
+            <div class="faq-item">
+                <strong>适合长时间阅读还是快速扫过？</strong>
+                <p>两者皆可。结构清晰，段落不长，你可以沉浸式浏览，也可以像翻阅杂志一样跳着看。</p>
+            </div>
+            <div class="faq-item">
+                <strong>收藏之后会怎样？</strong>
+                <p>收藏只是开始。很多页面适合收藏但很少再打开，而这里更适合真的放进日常路径——无论你隔多久回来，它都保持着那种熟悉的节奏。</p>
+            </div>
+        </div>
+
+        <hr>
+
+        <p style="color:#55524c; font-style:normal; font-size:0.95rem; text-align:center; max-width:500px; margin:1.8rem auto 0;">
+            不需要记住什么时候第一次来，也不需要计算第几次。只要它还在这里，而你偶尔会想起，就已经足够。
+        </p>
+
+        <div class="footer-note">
+            <a href="https://webs--williamhill.com" style="border-bottom:1px solid #bbb2a8;">威廉希尔</a> · 安静地存在
+        </div>
+
+    </div>
+</body>
+</html>
